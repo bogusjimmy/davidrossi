@@ -1,23 +1,12 @@
 :root {
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --text: #1a1a1a;
-  --muted: #5f6368;
-  --border: #e3e3e3;
-  --accent: #1f5fbf;
+  --bg: #121212;
+  --surface: #1c1c1e;
+  --text: #ececec;
+  --muted: #a0a0a5;
+  --border: #2e2e32;
+  --accent: #7aa7ff;
   --radius: 10px;
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121212;
-    --surface: #1c1c1e;
-    --text: #ececec;
-    --muted: #a0a0a5;
-    --border: #2e2e32;
-    --accent: #7aa7ff;
-  }
+  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
