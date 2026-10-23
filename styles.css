@@ -88,7 +88,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   border-bottom: 1px solid var(--border);
 }
 .card-preview.site { background: var(--border); }
-.card-preview.site img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.card-preview.site img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
 .brand-facebook { background: #0866ff; }
 .brand-linkedin { background: #0a66c2; }
 .brand-strava { background: #fc4c02; }
