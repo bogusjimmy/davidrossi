@@ -131,12 +131,12 @@
         <h2 id="contact-heading">Get in touch</h2>
         <form class="contact" id="contact-form" action="https://api.web3forms.com/submit" method="POST" target="_self">
           <input type="hidden" name="access_key" value="aacef085-abc5-47bb-8be5-40a898aaaa3f">
-          <input type="hidden" name="subject" value="New message from davidrossi.com.au">
           <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
           <div class="contact-row">
             <label>Name<input type="text" name="name" required autocomplete="name"></label>
             <label>Email<input type="email" name="email" required autocomplete="email"></label>
           </div>
+          <label>Subject<input type="text" name="subject" required maxlength="150"></label>
           <label>Message<textarea name="message" rows="5" required></textarea></label>
           <div class="contact-actions">
             <button type="submit">Send message</button>
@@ -160,10 +160,12 @@
       const button = form.querySelector('button');
       button.disabled = true;
       status.textContent = 'Sending\u2026';
+      const data = new FormData(form);
+      data.set('subject', 'davidrossi.com.au: ' + data.get('subject'));
       try {
-        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
-        const data = await res.json();
-        if (!data.success) throw new Error(data.message);
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+        const result = await res.json();
+        if (!result.success) throw new Error(result.message);
         form.reset();
         status.textContent = 'Thanks, your message has been sent.';
       } catch (err) {
