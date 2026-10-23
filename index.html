@@ -15,7 +15,7 @@
   <title>David Rossi</title>
   <meta name="description" content="David Rossi: Adelaide, Australia based adventurer, nerd, Dad, world&rsquo;s worst vegan, and competitive eater, usually found on two wheels. Not a character in Criminal Minds.">
   <base target="_blank">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <main>
@@ -127,6 +127,24 @@
         </ul>
       </section>
 
+      <section aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Get in touch</h2>
+        <form class="contact" id="contact-form" action="https://api.web3forms.com/submit" method="POST" target="_self">
+          <input type="hidden" name="access_key" value="aacef085-abc5-47bb-8be5-40a898aaaa3f">
+          <input type="hidden" name="subject" value="New message from davidrossi.com.au">
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+          <div class="contact-row">
+            <label>Name<input type="text" name="name" required autocomplete="name"></label>
+            <label>Email<input type="email" name="email" required autocomplete="email"></label>
+          </div>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
+          <div class="contact-actions">
+            <button type="submit">Send message</button>
+            <p class="contact-status" id="contact-status" role="status"></p>
+          </div>
+        </form>
+      </section>
+
       <footer class="footer">
         <p>&copy; <span id="year">2026</span> David Rossi</p>
         <p>Profile photo by <a href="https://www.instagram.com/spurlo_style/">@spurlo_style</a></p>
@@ -134,5 +152,26 @@
     </div>
   </main>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('contact-status');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const button = form.querySelector('button');
+      button.disabled = true;
+      status.textContent = 'Sending\u2026';
+      try {
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.message);
+        form.reset();
+        status.textContent = 'Thanks, your message has been sent.';
+      } catch (err) {
+        status.textContent = 'Sorry, something went wrong. Please try again.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
