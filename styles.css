@@ -96,6 +96,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .brand-ridewithgps { background: #000; }
 .card-preview img.wordmark { width: 60%; height: auto; max-height: 48px; }
 .brand-reddit { background: #ff4500; }
+.brand-youtube { background: #ff0000; }
 .brand-x { background: #000; }
 .brand-instagram { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); }
 .card-body { display: block; padding: 16px; }
