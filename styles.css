@@ -28,7 +28,7 @@ body {
 .intro { padding-top: 64px; }
 .avatar { border-radius: 50%; display: block; margin-bottom: 16px; }
 h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -0.01em; }
-.tagline { color: var(--muted); margin: 0 0 16px; font-size: 1.1rem; }
+.tagline { color: var(--muted); margin: 0; font-size: 1.1rem; }
 .bio { margin: 0; }
 
 section { margin-bottom: 40px; }
